@@ -1,0 +1,39 @@
+<div>
+    <h3>Crear Responsable</h3>
+    <p>Ingrese los datos del responsable</p>
+    <input [(ngModel)]="responsable.Id" name="id" class="number" type="number" placeholder="id" required> 
+    <input [(ngModel)]="responsable.Nombres" name="nombres" class="txt" type="text" placeholder="Nombres" required>
+    <input [(ngModel)]="responsable.Apellidos" name="apellidos" class="txt" type="text" placeholder="Apellidos" required>
+    <input [(ngModel)]="responsable.Email" name="email" class="txt" type="email" placeholder="Correo" required>
+    <input [(ngModel)]="responsable.Telefono" name="telefono" class="number" type="text" placeholder="Telefono" required> <br>
+    <button (click)="agregarResponsable()"> Agregar</button>
+</div>
+
+<div>
+	<h3>Listar Responsables</h3>
+	<h3 *ngIf="cargandoResponsables === true">Cargando responsables</h3>
+	<h3 *ngIf="responsables === null">No hay responsables registrados</h3>
+	<br>
+	 <table *ngIf="responsables != null" style="width:80%; text-align:center">
+        <tr>
+          <th>ID </th>
+          <th>NOMBRES </th>
+          <th>APELLIDOS </th>
+          <th>EMAIL </th>
+          <th>TELEFONO </th>
+          <th>ACCIONES</th>          
+        </tr>
+        <tr *ngFor="let responsable of responsables">
+          <th >{{responsable.Id}} </th>
+          <th>{{responsable.Nombres}} </th>
+          <th>{{responsable.Apellidos}} </th>
+          <th>{{responsable.Email}} </th>
+          <th>{{responsable.Telefono}} </th>
+          <th>
+            <button (click)="borrarResponsable(responsable.Id)"> Borrar</button>
+            <button (click)="actualizar(responsable)"> Borrar</button>
+          </th>
+        </tr>
+	</table>
+
+</div>

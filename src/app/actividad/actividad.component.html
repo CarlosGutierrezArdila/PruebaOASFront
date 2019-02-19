@@ -1,0 +1,7 @@
+<div>
+    <h3>Crear Actividad</h3>
+    <p>Ingrese los datos de la actividad</p>
+    <select [(ngModel)]="actividad.Responsable.Id" required>
+      <option *ngFor="let responsable of responsables" [value]="responsable.Id">{{responsable.Nombres}} {{responsable.Apellidos}}</option>
+    </select>
+</div>
