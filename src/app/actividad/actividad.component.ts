@@ -10,11 +10,7 @@ import { CrudService } from '../services/crud.service';
 export class ActividadComponent implements OnInit {
 
   responsables: any[];
-  actividad: any = {
-    IdResponsable:{
-      
-    }
-  };
+  actividad: any = "";
   actividades: any[];
 
   constructor(private crud:CrudService) { }
@@ -49,7 +45,8 @@ export class ActividadComponent implements OnInit {
        this.actividad.Descripcion&&
         this.actividad.Estado ) {
       this.crud.post('actividad',this.actividad).subscribe((data)=>{
-        console.log(data);
+        //console.log(data);
+        alert(data);
       });
     } else {
       alert("Formulario incompleto");
