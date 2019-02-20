@@ -1,7 +1,41 @@
 <div>
     <h3>Crear Actividad</h3>
     <p>Ingrese los datos de la actividad</p>
-    <select [(ngModel)]="actividad.Responsable.Id" required>
+    <div style="padding-top:20px">
+      <input [(ngModel)]="actividad.Id" name="id" class="number" type="number" placeholder="id" required>
+      <input [(ngModel)]="actividad.FechaCreacion" name="fechaCreacion" class="txt" type="date" placeholder="fecha Creacion" required>
+      <input [(ngModel)]="actividad.FechaLimite" name="fechaLimite" class="date" type="date" placeholder="fecha limite" required>
+      <input [(ngModel)]="actividad.IdResponsable" name="responsable" class="number" type="number" placeholder="Responsable id" required>
+      <input [(ngModel)]="actividad.Descripcion" name="descripcion" class="txt" type="text" placeholder="descripcion" required>
+      <input [(ngModel)]="actividad.Estado" name="estado" class="number" type="text" placeholder="Estado" required> 
+      <br> 
+      <button (click)="agregarActividad()"> Agregar Actividad </button><br>
+
+      
+  </div>
+    <select [(ngModel)]="actividad.IdResponsable" required>
       <option *ngFor="let responsable of responsables" [value]="responsable.Id">{{responsable.Nombres}} {{responsable.Apellidos}}</option>
     </select>
+    <table *ngIf="actividad != null" style="width:80%; text-align:center">
+      <tr>
+        <th>ID </th>
+        <th>FECHA CREACION </th>
+        <th>FECHA LIMITE</th>
+        <th>RESPONSABLE</th>
+        <th>DESCRIPCION </th>
+        <th>ESTADO</th>          
+      </tr>
+      <tr *ngFor="let actividad of actividad">
+        <th >{{actividad.Id}} </th>
+        <th>{{actividad.FechaCreacion}} </th>
+        <th>{{actividad.FechaLimite}} </th>
+        <th>{{actividad.IdResponsable}} </th>
+        <th>{{actividad.Descripcion}} </th>
+        <th>{{actividad.Estado}} </th>
+        <th>
+          <button > Borrar</button>
+          <button > Actualizar</button>
+        </th>
+      </tr>
+</table>
 </div>

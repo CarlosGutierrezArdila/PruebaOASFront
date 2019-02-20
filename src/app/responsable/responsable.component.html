@@ -4,7 +4,7 @@
     <input [(ngModel)]="responsable.Id" name="id" class="number" type="number" placeholder="id" required> 
     <input [(ngModel)]="responsable.Nombres" name="nombres" class="txt" type="text" placeholder="Nombres" required>
     <input [(ngModel)]="responsable.Apellidos" name="apellidos" class="txt" type="text" placeholder="Apellidos" required>
-    <input [(ngModel)]="responsable.Email" name="email" class="txt" type="email" placeholder="Correo" required>
+    <input [(ngModel)]="responsable.Email" name="email" class="txt" type="email" placeholder="Email" required>
     <input [(ngModel)]="responsable.Telefono" name="telefono" class="number" type="text" placeholder="Telefono" required> <br>
     <button (click)="agregarResponsable()"> Agregar</button>
 </div>
@@ -31,7 +31,11 @@
           <th>{{responsable.Telefono}} </th>
           <th>
             <button (click)="borrarResponsable(responsable.Id)"> Borrar</button>
-            <button (click)="actualizar(responsable)"> Borrar</button>
+            <button (click)="actualizarResponsable(responsable.Id,
+            responsable.Nombres,
+            responsable.Apellidos,
+            responsable.Email,
+            responsable.Telefono)"> Actualizar</button>
           </th>
         </tr>
 	</table>

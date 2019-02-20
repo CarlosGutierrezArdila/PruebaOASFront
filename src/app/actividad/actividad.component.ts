@@ -11,10 +11,11 @@ export class ActividadComponent implements OnInit {
 
   responsables: any[];
   actividad: any = {
-    Responsable:{
+    IdResponsable:{
       
     }
   };
+  actividades: any[];
 
   constructor(private crud:CrudService) { }
 
@@ -33,6 +34,28 @@ export class ActividadComponent implements OnInit {
         alert('Ocurrio un error');
       });
   }
+
+  getActividades(){
+    this.crud.get("/actividad/","").subscribe((data) =>  {
+      this.actividad=data;  
+      console.log(this.actividades)
+    });
+}
+
+  agregarActividad(){
+    console.log(this.actividad);
+    if (this.actividad.Id && this.actividad.FechaCreacion &&
+       this.actividad.FechaLimite && this.actividad.IdResponsable&& 
+       this.actividad.Descripcion&&
+        this.actividad.Estado ) {
+      this.crud.post('actividad',this.actividad).subscribe((data)=>{
+        console.log(data);
+      });
+    } else {
+      alert("Formulario incompleto");
+    }
+    
+}
 
 
 }

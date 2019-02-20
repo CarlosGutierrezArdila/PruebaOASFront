@@ -43,5 +43,25 @@ export class ResponsableComponent implements OnInit {
       alert("Formulario incompleto");
     }
   }
+  borrarResponsable(id){
+    this.crud.delete("/responsable/"+id,"").subscribe((data)=>{
+      console.log(data);
+      this.getResponsables();
+    })
+}
+actualizarResponsable(id,nombres, apellidos,email,telefono){
+  console.log("actualizando responsable")
+  if(id && nombres && apellidos && email && telefono){
+    let params={"Id":id,"Nombres":nombres,"Apellidos":apellidos,"Email":email,"Telefono":telefono}
+    console.log(params);
+    this.crud.update("/responsable/"+id,params).subscribe((data)=>{
+      console.log(data);
+      this.getResponsables();
+    });
+  }else{
+    alert("formulario incompleto");
+  }
+
+}
 
 }
